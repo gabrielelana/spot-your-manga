@@ -1,4 +1,3 @@
-spot-your-manga
-===============
+# Spot Your Manga
 
-Spot your mangas in the mangareader.net home page
+Some manga have an hard name to remember, this is a user script compatible with Greasemonkey and Tampermonkey that will let you spot your mangas in the mangareader.net home page
