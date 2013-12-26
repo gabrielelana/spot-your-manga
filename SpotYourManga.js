@@ -15,7 +15,8 @@
 var $spottedMangaMarker = $('<span style="margin-left: 10px; color: black; font-size: 1.2em; position: absolute;">&#x2605;</span>')
 var mangaToKeepTrackOf = [
     'Naruto', 'Bleach', 'Dragons Rioting', 'Beelzebub', 'The Breaker: New Waves', 'Fairy Tail',
-    'Historys Strongest Disciple Kenichi', 'Girls of the Wild\'s', 'Diamond no Ace', 'One Piece'
+    'Historys Strongest Disciple Kenichi', 'Girls of the Wild\'s', 'Diamond no Ace', 'One Piece',
+    'Freezing', 'Sekirei'
 ]
 
 $('.chapter strong')
