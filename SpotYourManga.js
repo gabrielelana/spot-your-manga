@@ -29,23 +29,23 @@
     
     function spawnMarker() {
         return $('<span />')
-    		.css({
-                'margin-right': '10px',
-                'font-size': '1.2em',
-                'position': 'relative',
-                'cursor': 'pointer'
-            })
-    		.html('&#x2605;')
-            .on('click', editFavorite)
+        .css({
+            'margin-right': '10px',
+            'font-size': '1.2em',
+            'position': 'relative',
+            'cursor': 'pointer'
+        })
+        .html('&#x2605;')
+        .on('click', editFavorite)
     }
     
     favManga = localStorage.favManga && localStorage.favManga.split(',') || []
     
     $('.chapter')
-    	.each(function() {
-            var isFav = favManga.indexOf($(this).text()) >= 0
-            $(this).parent().prepend(spawnMarker().css('color', isFav ? 'orange' : 'black'))
-        })
+    .each(function() {
+        var isFav = favManga.indexOf($(this).text()) >= 0
+        $(this).parent().prepend(spawnMarker().css('color', isFav ? 'orange' : 'black'))
+    })
 
 }(jQuery));
 
