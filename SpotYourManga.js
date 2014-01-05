@@ -12,6 +12,20 @@
   
   var starred = localStorage.starred && JSON.parse(localStorage.starred) || []
   var emptyStarSymbol = '&#x2606', fullStarSymbol = '&#x2605'
+
+  var $marker = $('<span />')
+    .css({
+      'margin-right': '10px',
+      'font-size': '1.2em',
+      'position': 'relative',
+      'cursor': 'pointer'
+    })
+    .on('click', toggleStar)
+
+  $('.chapter').each(function() {
+    var isStarred = starred.indexOf($(this).text()) >= 0
+    $(this).parent().prepend($marker.clone().html(isStarred ? fullStarSymbol : emptyStarSymbol))
+  })
   
   function toggleStar() {
     var target = $(this)
@@ -26,21 +40,5 @@
     }
     localStorage.starred = JSON.stringify(starred)
   }
-  
-  function spawnMarker() {
-    return $('<span />')
-    .css({
-      'margin-right': '10px',
-      'font-size': '1.2em',
-      'position': 'relative',
-      'cursor': 'pointer'
-    })
-    .on('click', toggleStar)
-  }
-  
-  $('.chapter').each(function() {
-    var isStarred = starred.indexOf($(this).text()) >= 0
-    $(this).parent().prepend(spawnMarker().html(isStarred ? fullStarSymbol: emptyStarSymbol))
-  })
-
+    
 }(jQuery));
