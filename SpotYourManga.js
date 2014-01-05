@@ -10,7 +10,8 @@
 
 (function ($) {
     
-    var favManga, $favMangaMarker;
+    var favManga = localStorage.favManga && JSON.parse(localStorage.favManga) || []
+	var $favMangaMarker
     
     function editFavorite() {
         var target = $(this)
@@ -23,7 +24,7 @@
             favManga.push(clickedTitle)
             target.css('color', 'orange')
         }
-        localStorage.favManga = favManga
+        localStorage.favManga = JSON.stringify(favManga)
     }
     
     function spawnMarker() {
@@ -37,8 +38,6 @@
         .html('&#x2605;')
         .on('click', editFavorite)
     }
-    
-    favManga = localStorage.favManga && localStorage.favManga.split(',') || []
     
     $('.chapter')
     .each(function() {
