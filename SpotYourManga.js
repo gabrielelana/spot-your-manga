@@ -3,7 +3,7 @@
 // @namespace    https://github.com/gabrielelana/spot-your-manga
 // @author       https://github.com/gabrielelana
 // @author       https://github.com/stefanobaghino
-// @version      0.0.2
+// @version      0.0.3
 // @description  Some manga have an hard name to remember, this will let you spot your mangas in the mangareader.net home page
 // @match        http://www.mangareader.net/
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
@@ -12,8 +12,8 @@
 (function ($) {
   
   var starred = localStorage.starred && JSON.parse(localStorage.starred) || []
-  var emptyStarSymbol = '&#x2606', fullStarSymbol = '&#x2605'
 
+  var emptyStarSymbol = '&#x2606', fullStarSymbol = '&#x2605'
   var $marker = $('<span />')
     .css({
       'margin-right': '10px',
