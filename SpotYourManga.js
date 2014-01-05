@@ -10,21 +10,21 @@
 
 (function ($) {
   
-  var favourite = localStorage.favourite && JSON.parse(localStorage.favourite) || []
-  var $favMangaMarker
+  var starred = localStorage.starred && JSON.parse(localStorage.starred) || []
+  var emptyStarSymbol = '&#x2606', fullStarSymbol = '&#x2605'
   
-  function editFavorite() {
+  function toggleStar() {
     var target = $(this)
     var clickedTitle = target.next().text()
-    var titleIndex = favourite.indexOf(clickedTitle)
+    var titleIndex = starred.indexOf(clickedTitle)
     if (titleIndex >= 0) {
-      favourite.splice(titleIndex, 1)
-      target.css('color', 'black')
+      starred.splice(titleIndex, 1)
+      target.html(emptyStarSymbol)
     } else {
-      favourite.push(clickedTitle)
-      target.css('color', 'orange')
+      starred.push(clickedTitle)
+      target.html(fullStarSymbol)
     }
-    localStorage.favourite = JSON.stringify(favourite)
+    localStorage.starred = JSON.stringify(starred)
   }
   
   function spawnMarker() {
@@ -35,14 +35,12 @@
       'position': 'relative',
       'cursor': 'pointer'
     })
-    .html('&#x2605;')
-    .on('click', editFavorite)
+    .on('click', toggleStar)
   }
   
-  $('.chapter')
-  .each(function() {
-    var isFavourite = favourite.indexOf($(this).text()) >= 0
-    $(this).parent().prepend(spawnMarker().css('color', isFavourite ? 'orange' : 'black'))
+  $('.chapter').each(function() {
+    var isStarred = starred.indexOf($(this).text()) >= 0
+    $(this).parent().prepend(spawnMarker().html(isStarred ? fullStarSymbol: emptyStarSymbol))
   })
 
 }(jQuery));
