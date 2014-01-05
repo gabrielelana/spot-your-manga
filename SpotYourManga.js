@@ -1,49 +1,48 @@
 // ==UserScript==
-// @name       SpotYourManga
+// @name     SpotYourManga
 // @namespace  http://gabrielelana.it
-// @version    0.0.2
+// @version  0.0.2
 // @description  Some manga have an hard name to remember, this will let you spot your mangas in the mangareader.net home page
-// @match      http://www.mangareader.net/
+// @match    http://www.mangareader.net/
 // @copyright  2013, Gabriele Lana
-// @require    http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
+// @require  http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
 // ==/UserScript==
 
 (function ($) {
-    
-    var favManga = localStorage.favManga && JSON.parse(localStorage.favManga) || []
-	var $favMangaMarker
-    
-    function editFavorite() {
-        var target = $(this)
-        var clickedTitle = target.next().text()
-        var titleIndex = favManga.indexOf(clickedTitle)
-        if (titleIndex >= 0) {
-            favManga.splice(titleIndex, 1)
-            target.css('color', 'black')
-        } else {
-            favManga.push(clickedTitle)
-            target.css('color', 'orange')
-        }
-        localStorage.favManga = JSON.stringify(favManga)
+  
+  var favourite = localStorage.favourite && JSON.parse(localStorage.favourite) || []
+  var $favMangaMarker
+  
+  function editFavorite() {
+    var target = $(this)
+    var clickedTitle = target.next().text()
+    var titleIndex = favourite.indexOf(clickedTitle)
+    if (titleIndex >= 0) {
+      favourite.splice(titleIndex, 1)
+      target.css('color', 'black')
+    } else {
+      favourite.push(clickedTitle)
+      target.css('color', 'orange')
     }
-    
-    function spawnMarker() {
-        return $('<span />')
-        .css({
-            'margin-right': '10px',
-            'font-size': '1.2em',
-            'position': 'relative',
-            'cursor': 'pointer'
-        })
-        .html('&#x2605;')
-        .on('click', editFavorite)
-    }
-    
-    $('.chapter')
-    .each(function() {
-        var isFav = favManga.indexOf($(this).text()) >= 0
-        $(this).parent().prepend(spawnMarker().css('color', isFav ? 'orange' : 'black'))
+    localStorage.favourite = JSON.stringify(favourite)
+  }
+  
+  function spawnMarker() {
+    return $('<span />')
+    .css({
+      'margin-right': '10px',
+      'font-size': '1.2em',
+      'position': 'relative',
+      'cursor': 'pointer'
     })
+    .html('&#x2605;')
+    .on('click', editFavorite)
+  }
+  
+  $('.chapter')
+  .each(function() {
+    var isFavourite = favourite.indexOf($(this).text()) >= 0
+    $(this).parent().prepend(spawnMarker().css('color', isFavourite ? 'orange' : 'black'))
+  })
 
 }(jQuery));
-
