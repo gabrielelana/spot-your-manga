@@ -16,7 +16,6 @@
         var target = $(this)
         var clickedTitle = target.next().text()
         var titleIndex = favManga.indexOf(clickedTitle)
-        console.log(titleIndex)
         if (titleIndex >= 0) {
             favManga.splice(titleIndex, 1)
             target.css('color', 'black')
