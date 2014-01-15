@@ -6,6 +6,7 @@
 // @version      0.0.3
 // @description  Some manga have an hard name to remember, this will let you spot your mangas in the mangareader.net home page
 // @match        http://www.mangareader.net/
+// @match        http://www.mangareader.net/latest*
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
 // ==/UserScript==
 
